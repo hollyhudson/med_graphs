@@ -1,0 +1,35 @@
+.line {
+	fill: none;
+	stroke: steelblue;
+	stroke-width: 2px;
+}
+
+.axis {
+	font: 14px san-serif;
+}
+
+.LDL_C_dots {
+	fill: rgba(200, 200, 200, 0.5);
+	stroke: black;
+	stroke-width: 1px;
+}
+
+.grid line {
+	stroke: lightgrey;
+	stroke-opacity: 0.7;
+	shape-rendering: crispEdges; 	// makes narrow lines
+}
+
+.grid path {
+	stroke-width: 0; 	// keeps the grid lines from being too thick
+}
+
+.baseline line {
+	stroke: red;
+	stroke-opacity: 0.7;
+	shape-rendering: crispEdges; 	// makes narrow lines
+}
+
+.baseline path {
+	stroke-width: 0; 	// keeps the grid lines from being too thick
+}
