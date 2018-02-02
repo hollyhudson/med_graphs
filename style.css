@@ -1,17 +1,75 @@
-.line {
+.axis {
+	font: 14px san-serif;
+}
+
+.LDL_C_line {
 	fill: none;
 	stroke: steelblue;
 	stroke-width: 2px;
 }
 
-.axis {
-	font: 14px san-serif;
+.LDL_C_points {
+	fill: rgba(200, 200, 200, 0.5);
+	stroke: steelblue;
+	stroke-width: 1px;
 }
 
-.LDL_C_dots {
+.HDL_C_line {
+	fill: none;
+	stroke: red;
+	stroke-width: 2px;
+}
+
+.HDL_C_points {
 	fill: rgba(200, 200, 200, 0.5);
-	stroke: black;
+	stroke: red;
 	stroke-width: 1px;
+}
+
+.TC_line {
+	fill: none;
+	stroke: purple;
+	stroke-width: 2px;
+}
+
+.TC_points {
+	fill: rgba(200, 200, 200, 0.5);
+	stroke: purple;
+	stroke-width: 1px;
+}
+
+.TAG_line {
+	fill: none;
+	stroke: green;
+	stroke-width: 2px;
+}
+
+.TAG_points {
+	fill: rgba(200, 200, 200, 0.5);
+	stroke: green;
+	stroke-width: 1px;
+}
+
+.ratio_line {
+	fill: none;
+	stroke: black;
+	stroke-width: 2px;
+}
+
+.ratio_points {
+	fill: none;
+	stroke: black;
+	stroke-width: 2px;
+}
+
+.ratio_riskline {
+	stroke: red;
+	stroke-opacity: 0.7;
+	shape-rendering: crispEdges;
+}
+
+.risk_area {
+	fill: rgba(200, 0, 0, 0.5);
 }
 
 .grid line {
