@@ -4,17 +4,29 @@
  * 		return Math.max(d.column1, d.column2); })]);
  */
 
+const RATIO_RISK_VALUE = 3.5; // TC_HDL ratio max healthy value
+
 let margin = {top: 50, right: 20, bottom: 80, left: 50};
 let width = 960 - margin.left - margin.right;
 let height = 700 - margin.top - margin.bottom;
 
 let parseDate = d3.timeParse("%Y-%m-%d");
 
-let xScale = d3.scaleTime(). range([0, width]);
+let xScale = d3.scaleTime().range([0, width]);
 let lipid_yScale = d3.scaleLinear().range([height, 0]);
 let ratio_yScale = d3.scaleLinear().range([height, 0]);
 
-// prep the lipid chart
+/*** prep the lipid chart ***/
+
+
+// create a risk area to fill
+// "d" here just refers to the data that we'll eventually get(?)
+let risk_area = d3.area()
+	.x(function(d) { return xScale(d.date); })
+	.y0(function(d) { return ratio_yScale(RATIO_RISK_VALUE); })
+	.y1(0);
+
+// create plot lines
 let LDL_C_basisline = d3.line()
 	.curve(d3.curveBasis)
 	.x(function(d) { return xScale(d.date); })
@@ -76,7 +88,7 @@ d3.csv("Bloodwork_tbh.csv", function(error, data) {
 		d3.min(data, function(d) { return Math.min(d.LDL_C, d.HDL_C, d.TC, d.TAG)}),
 		d3.max(data, function(d) { return Math.max(d.LDL_C, d.HDL_C, d.TC, d.TAG)}),
 	]);
-	ratio_yScale.domain([2, 5]);
+	ratio_yScale.domain([2.5, 4.5]);
 
 	/****** Lipid Chart *********/
 
@@ -167,15 +179,15 @@ d3.csv("Bloodwork_tbh.csv", function(error, data) {
 	ratio_chart.append("g")
 		.attr("class", "ratio_riskline")
 		.call(d3.axisLeft(ratio_yScale)
-			.tickValues([3.5])
+			.tickValues([RATIO_RISK_VALUE])
 			.tickSize(-width)
 			.tickFormat(""));
 
-	// create a risk area to fill
-	let risk_area = d3.area()
-		.x(function(d) { return x(d.date); })
-		.y0(height)
-		.y1(function(d) { return y(d.TC_HDL_ratio); });
+	// add risk area fill
+	ratio_chart.append("path")
+		.data([data])
+		.attr("class", "risk_area")
+		.attr("d", risk_area);
 
 	// draw a curvy line
 	ratio_chart.append("path")

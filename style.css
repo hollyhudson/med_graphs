@@ -50,6 +50,12 @@
 	stroke-width: 1px;
 }
 
+.ratio_riskline line {
+	stroke: red;
+	stroke-opacity: 0.7;
+	shape-rendering: crispEdges;
+}
+
 .ratio_line {
 	fill: none;
 	stroke: black;
@@ -57,19 +63,14 @@
 }
 
 .ratio_points {
-	fill: none;
+	fill: rgba(200, 200, 200, 0.5);
 	stroke: black;
-	stroke-width: 2px;
+	stroke-width: 1px;
 }
 
-.ratio_riskline {
-	stroke: red;
-	stroke-opacity: 0.7;
-	shape-rendering: crispEdges;
-}
 
 .risk_area {
-	fill: rgba(200, 0, 0, 0.5);
+	fill: rgba(200, 0, 0, 0.3);
 }
 
 .grid line {
@@ -82,12 +83,3 @@
 	stroke-width: 0; 	// keeps the grid lines from being too thick
 }
 
-.baseline line {
-	stroke: red;
-	stroke-opacity: 0.7;
-	shape-rendering: crispEdges; 	// makes narrow lines
-}
-
-.baseline path {
-	stroke-width: 0; 	// keeps the grid lines from being too thick
-}
